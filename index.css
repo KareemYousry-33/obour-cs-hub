@@ -667,6 +667,36 @@ code {
         gap: 1.5rem;
     }
 
+    /* Fix Custom File Browser Pages for Mobile (Exam & Summaries) */
+    .file-list {
+        gap: 1rem;
+    }
+
+    .file-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem;
+        gap: 1.2rem;
+    }
+
+    .file-info {
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .file-details h3 {
+        font-size: 1.1rem;
+        word-break: break-all;
+        /* Prevent long filenames from breaking layout */
+    }
+
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
     .glass-footer {
         padding: 1.5rem 1rem;
     }
@@ -678,10 +708,11 @@ code {
     }
 
     /* Performance Optimizations to fix Lag Strategy */
-    .blob {
+    .blob,
+    .space-icon {
         animation: none !important;
         /* Extremely heavy on mobile rendering */
-        opacity: 0.15;
+        display: none !important;
     }
 
     .glass-card::before {
