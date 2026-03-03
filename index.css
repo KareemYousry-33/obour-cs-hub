@@ -13,6 +13,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    /* Remove default mobile tap highlight */
 }
 
 body {
@@ -234,6 +236,16 @@ body {
     border-color: rgba(247, 37, 133, 0.8);
     transform: translateY(-4px);
     box-shadow: 0 10px 25px rgba(247, 37, 133, 0.2);
+}
+
+/* Modern Mobile Click/Tap Animation */
+.btn:active,
+.glass-card:active,
+.file-card:active,
+.download-btn:active,
+.subject-actions a:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.1s ease !important;
 }
 
 /* Glass Mockup Card */
