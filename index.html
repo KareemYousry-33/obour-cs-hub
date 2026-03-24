@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ObourCS Hub | ملخصات وامتحانات علوم حاسب</title>
+    <meta name="description" content="المنصة الأولى لطلاب علوم حاسب بمعاهد العبور. ملخصات، امتحانات، ومصادر دراسية.">
+    <!-- Google Fonts for modern text -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css?v=2">
+
+    <!-- PWA Setup & Favicon -->
+    <link rel="icon" type="image/png" href="icon-512.png?v=2">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0b10">
+    <link rel="apple-touch-icon" href="icon-512.png">
+</head>
+
+<body>
+    <!-- Background Animated Shapes -->
+    <div class="background-elements">
+        <div class="blob shape-1"></div>
+        <div class="blob shape-2"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="glass-nav">
+        <div class="logo" dir="ltr">
+            <a href="#home"
+                style="text-decoration: none; color: inherit; display: flex; gap: 0.5rem; align-items: center;">
+                <span class="en-logo">ObourCS</span>
+                <span class="ar-logo">Hub</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#subjects">المواد الدراسية</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <span class="badge">دفعة علوم حاسب - معاهد العبور</span>
+                <h1 class="title">ملخصات + امتحانات سابقة<br><span class="gradient-text">لكل مواد علوم الحاسب</span>
+                </h1>
+                <p class="subtitle">المكان الموحد اللي بيجمع كل المصادر الدراسية بشكل منظم، سريع، واحترافي عشان تنجز
+                    وقتك.</p>
+                <div class="cta-group">
+                    <button class="btn btn-primary" onclick="location.href='#subjects'"
+                        style="display: flex; align-items: center; gap: 0.8rem; justify-content: center;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        تصفح الملخصات
+                    </button>
+                    <button class="btn btn-secondary" onclick="location.href='#subjects'"
+                        style="display: flex; align-items: center; gap: 0.8rem; justify-content: center;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                            </path>
+                        </svg>
+                        تصفح الامتحانات
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <!-- Decorative Code snippet Mockup -->
+                <div class="glass-card mockup-card">
+                    <div class="mockup-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="mockup-body">
+                        <code>
+                            <span class="keyword">const</span> <span class="variable">student</span> = {<br>
+                            &nbsp;&nbsp;<span class="property">institute</span>: <span class="string">'Obour'</span>,<br>
+                            &nbsp;&nbsp;<span class="property">department</span>: <span class="string">'CS'</span>,<br>
+                            &nbsp;&nbsp;<span class="property">readyForExams</span>: <span class="keyword">true</span>,<br>
+                            &nbsp;&nbsp;<span class="property">source</span>: <span class="string">'ObourCS Hub'</span><br>
+                            };<br>
+                            <br>
+                            <span class="keyword">if</span> (student.readyForExams) {<br>
+                            &nbsp;&nbsp;console.log(<span class="string">"بالتوفيق يا هندسة! 🚀"</span>);<br>
+                            }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subjects Section -->
+        <section id="subjects" class="section-padding">
+            <div class="section-header">
+                <h2 class="section-title">المواد <span class="gradient-text">الدراسية</span></h2>
+                <p class="section-subtitle">اختر المادة لتصفح الملخصات وامتحانات السنين السابقة.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Subject 1 -->
+                <div class="glass-card item-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Linear Algebra</h3>
+                    <p style="margin-bottom: 0;">الجبر الخطي</p>
+                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="btn btn-primary w-100"
+                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            الملخصات
+                        </button>
+                        <a href="exams/linear_algebra/index.html" class="btn btn-secondary w-100"
+                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                                </path>
+                            </svg>
+                            الامتحانات
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Subject 2 -->
+                <div class="glass-card item-card">
+                    <div class="card-icon" style="background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3>OOP</h3>
+                    <p style="margin-bottom: 0;">البرمجة الشيئية</p>
+                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="btn btn-primary w-100"
+                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            الملخصات
+                        </button>
+                        <button class="btn btn-secondary w-100"
+                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                                </path>
+                            </svg>
+                            الامتحانات
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Subject 3 -->
+                <div class="glass-card item-card">
+                    <div class="card-icon" style="background: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Business Ethics</h3>
+                    <p style="margin-bottom: 0;">اخلاقيات عمل</p>
+                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="btn btn-primary w-100"
+                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            الملخصات
+                        </button>
+                        <a href="exams/business_ethics/index.html" class="btn btn-secondary w-100"
+                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                                </path>
+                            </svg>
+                            الامتحانات
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Subject 4 -->
+                <div class="glass-card item-card">
+                    <div class="card-icon" style="background: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3>Discrete Math</h3>
+                    <p style="margin-bottom: 0;">الرياضيات الغير متصلة</p>
+                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
+                        <a href="summaries/discrete_math/index.html" class="btn btn-primary w-100"
+                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            الملخصات
+                        </a>
+                        <a href="exams/discrete_math/index.html" class="btn btn-secondary w-100"
+                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                                </path>
+                            </svg>
+                            الامتحانات
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Subject 5 -->
+                <div class="glass-card item-card">
+                    <div class="card-icon" style="background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                            <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Statics & Probability</h3>
+                    <p style="margin-bottom: 0;">الإحصاء والاحتمالات</p>
+                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="btn btn-primary w-100"
+                            style="flex: 1; padding: 0.5rem; font-size: 0.9rem;">الملخصات</button>
+                        <a href="exams/statistics/index.html" class="btn btn-secondary w-100"
+                            style="flex: 1; padding: 0.5rem; font-size: 0.9rem; text-decoration: none; display: inline-flex; justify-content: center; align-items: center;">الامتحانات</a>
+                    </div>
+                </div>
+
+                <!-- Subject 6 -->
+                <div class="glass-card item-card">
+                    <div class="card-icon" style="background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Introduction to Economics</h3>
+                    <p style="margin-bottom: 0;">مقدمه ف الاقتصاد</p>
+                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="btn btn-primary w-100"
+                            style="flex: 1; padding: 0.5rem; font-size: 0.9rem;">الملخصات</button>
+                        <a href="exams/economics/index.html" class="btn btn-secondary w-100"
+                            style="flex: 1; padding: 0.5rem; font-size: 0.9rem; text-decoration: none; display: inline-flex; justify-content: center; align-items: center;">الامتحانات</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="glass-footer">
+            <p dir="ltr" class="footer-content">
+                <span>Developed By</span>
+                <a href="#" class="developer-link">
+                    <span class="developer-name">Eng. Kareem Yousry</span>
+                </a>
+            </p>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
