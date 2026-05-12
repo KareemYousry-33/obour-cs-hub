@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملخصات اخلاقيات عمل | ObourCS Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../index.css?v=2">
+    <link rel="icon" type="image/png" href="../../icon-512.png?v=2">
+    <style>
+        .file-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+        .file-card { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; background: rgba(20, 22, 30, 0.4); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; transition: all 0.3s ease; text-decoration: none; color: var(--text-main); }
+        .file-card:hover { transform: translateX(-10px); background: rgba(40, 44, 60, 0.6); border-color: rgba(76, 201, 240, 0.4); box-shadow: 0 10px 25px rgba(76, 201, 240, 0.15); }
+        .file-info { display: flex; align-items: center; gap: 1.5rem; }
+        .file-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; }
+        .file-icon svg { width: 24px; height: 24px; }
+        .file-details h3 { font-size: 1.2rem; margin-bottom: 0.3rem; font-family: 'Outfit', sans-serif; font-weight: 700; }
+        .file-details p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+        .file-actions { display: flex; gap: 0.8rem; }
+        .action-btn { padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; background: transparent; color: var(--text-main); }
+        .view-btn { border: 1px solid rgba(76, 201, 240, 0.3); }
+        .view-btn:hover { background: rgba(76, 201, 240, 0.15); border-color: rgba(76, 201, 240, 0.8); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(76, 201, 240, 0.2); color: var(--secondary); }
+        .download-btn { border: 1px solid rgba(247, 37, 133, 0.3); }
+        .download-btn:hover { background: rgba(247, 37, 133, 0.15); border-color: rgba(247, 37, 133, 0.8); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(247, 37, 133, 0.2); color: var(--accent); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; margin-bottom: 2rem; transition: color 0.3s ease; font-weight: 600; }
+        .back-link:hover { color: var(--text-main); }
+    </style>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob shape-1"></div>
+        <div class="blob shape-2"></div>
+    </div>
+    <nav class="glass-nav">
+        <div class="logo" dir="ltr">
+            <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; gap: 0.5rem; align-items: center;">
+                <span class="en-logo">ObourCS</span><span class="ar-logo">Hub</span>
+            </a>
+        </div>
+    </nav>
+    <main class="section-padding">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <a href="../../index.html#subjects" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                الرجوع للمواد
+            </a>
+            <div class="section-header" style="text-align: right; margin-bottom: 3rem;">
+                <h2 class="section-title" style="font-size: 2.2rem;">ملخصات <span class="gradient-text">اخلاقيات عمل</span></h2>
+                <p class="section-subtitle" style="margin: 0;">(Business Ethics)</p>
+            </div>
+            <div class="file-list">
+                <div style="text-align: center; color: var(--text-muted); padding: 3rem;">
+                    <h3>لا توجد ملخصات متاحة حالياً</h3>
+                    <p>سيتم رفع الملخصات قريباً.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../../app.js"></script>
+</body>
+</html>
