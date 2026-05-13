@@ -1,4 +1,4 @@
-const CACHE_NAME = 'obourcs-hub-v3';
+const CACHE_NAME = 'obourcs-hub-v4';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
