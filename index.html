@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ObourCS Hub | ملخصات وامتحانات علوم حاسب</title>
+    <title>ObourCS Hub | البوابة الرئيسية</title>
     <meta name="description" content="المنصة الأولى لطلاب علوم حاسب بمعاهد العبور. ملخصات، امتحانات، ومصادر دراسية.">
     <!-- Google Fonts for modern text -->
     <link
@@ -37,7 +37,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="#home">الرئيسية</a></li>
-            <li><a href="#subjects">المواد الدراسية</a></li>
+            <li><a href="#levels">المواد الدراسية</a></li>
         </ul>
     </nav>
 
@@ -45,13 +45,13 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <span class="badge">دفعة علوم حاسب - معاهد العبور</span>
+                <span class="badge">بوابة علوم حاسب - معاهد العبور</span>
                 <h1 class="title">ملخصات + امتحانات سابقة<br><span class="gradient-text">لكل مواد علوم الحاسب</span>
                 </h1>
                 <p class="subtitle">المكان الموحد اللي بيجمع كل المصادر الدراسية بشكل منظم، سريع، واحترافي عشان تنجز
                     وقتك.</p>
                 <div class="cta-group">
-                    <button class="btn btn-primary" onclick="location.href='#subjects'"
+                    <button class="btn btn-primary" onclick="location.href='#levels'"
                         style="display: flex; align-items: center; gap: 0.8rem; justify-content: center;">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -61,16 +61,16 @@
                             <line x1="16" y1="17" x2="8" y2="17"></line>
                             <polyline points="10 9 9 9 8 9"></polyline>
                         </svg>
-                        تصفح الملخصات
+                        اختر فرقتك
                     </button>
-                    <button class="btn btn-secondary" onclick="location.href='#subjects'"
+                    <button class="btn btn-secondary" onclick="location.href='#levels'"
                         style="display: flex; align-items: center; gap: 0.8rem; justify-content: center;">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
                             </path>
                         </svg>
-                        تصفح الامتحانات
+                        مواد السنين السابقة
                     </button>
                 </div>
             </div>
@@ -102,202 +102,48 @@
         </section>
 
         <!-- Subjects Section -->
-        <section id="subjects" class="section-padding">
+                <!-- Levels Section -->
+        <section id="levels" class="section-padding">
             <div class="section-header">
-                <h2 class="section-title">المواد <span class="gradient-text">الدراسية</span></h2>
-                <p class="section-subtitle">اختر المادة لتصفح الملخصات وامتحانات السنين السابقة.</p>
+                <h2 class="section-title">الفرق <span class="gradient-text">الدراسية</span></h2>
+                <p class="section-subtitle">اختر الفرقة الدراسية والترم للوصول للملخصات والامتحانات.</p>
             </div>
 
-            <div class="cards-grid">
-                <!-- Subject 1 -->
-                <div class="glass-card item-card">
-                    <div class="card-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                            <polyline points="2 17 12 22 22 17"></polyline>
-                            <polyline points="2 12 12 17 22 12"></polyline>
-                        </svg>
+            <div class="levels-grid">
+                <!-- Level 1 -->
+                <div class="glass-card level-card">
+                    <div class="level-header">
+                        <div class="level-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span>1</span>
+                        </div>
+                        <h3>الفرقة الأولى</h3>
                     </div>
-                    <h3>Linear Algebra</h3>
-                    <p style="margin-bottom: 0;">الجبر الخطي</p>
-                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
-                        <a href="summaries/linear_algebra/index.html" class="btn btn-primary w-100"
-                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                            الملخصات
+                    <div class="level-actions">
+                        <a href="https://drive.google.com/drive/folders/1DLbt5-I8e7lMgcUKRkz1ujNa6A78L4b5" target="_blank" class="btn btn-secondary w-100" style="display: flex; justify-content: center; align-items: center; gap: 8px;">
+                            الترم الأول (Drive)
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                         </a>
-                        <a href="exams/linear_algebra/index.html" class="btn btn-secondary w-100"
-                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
-                                </path>
-                            </svg>
-                            الامتحانات
-                        </a>
+                        <a href="level1-term2.html" class="btn btn-primary w-100" style="display: flex; justify-content: center; align-items: center;">الترم الثاني</a>
                     </div>
                 </div>
 
-                <!-- Subject 2 -->
-                <div class="glass-card item-card">
-                    <div class="card-icon" style="background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
+                <!-- Level 2 -->
+                <div class="glass-card level-card">
+                    <div class="level-header">
+                        <div class="level-icon" style="background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);">
+                            <span>2</span>
+                        </div>
+                        <h3>الفرقة الثانية</h3>
                     </div>
-                    <h3>OOP</h3>
-                    <p style="margin-bottom: 0;">البرمجة الشيئية</p>
-                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
-                        <a href="summaries/oop/index.html" class="btn btn-primary w-100"
-                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                            الملخصات
-                        </a>
-                        <a href="exams/oop/index.html" class="btn btn-secondary w-100"
-                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
-                                </path>
-                            </svg>
-                            الامتحانات
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Subject 3 -->
-                <div class="glass-card item-card">
-                    <div class="card-icon" style="background: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <h3>Business Ethics</h3>
-                    <p style="margin-bottom: 0;">اخلاقيات عمل</p>
-                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
-                        <a href="summaries/business_ethics/index.html" class="btn btn-primary w-100"
-                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                            الملخصات
-                        </a>
-                        <a href="exams/business_ethics/index.html" class="btn btn-secondary w-100"
-                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
-                                </path>
-                            </svg>
-                            الامتحانات
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Subject 4 -->
-                <div class="glass-card item-card">
-                    <div class="card-icon" style="background: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="18" y1="20" x2="18" y2="10"></line>
-                            <line x1="12" y1="20" x2="12" y2="4"></line>
-                            <line x1="6" y1="20" x2="6" y2="14"></line>
-                        </svg>
-                    </div>
-                    <h3>Discrete Math</h3>
-                    <p style="margin-bottom: 0;">الرياضيات الغير متصلة</p>
-                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
-                        <a href="summaries/discrete_math/index.html" class="btn btn-primary w-100"
-                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                            الملخصات
-                        </a>
-                        <a href="exams/discrete_math/index.html" class="btn btn-secondary w-100"
-                            style="flex: 1; padding: 0.7rem 0.5rem; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
-                                </path>
-                            </svg>
-                            الامتحانات
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Subject 5 -->
-                <div class="glass-card item-card">
-                    <div class="card-icon" style="background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-                            <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-                        </svg>
-                    </div>
-                    <h3>Statics & Probability</h3>
-                    <p style="margin-bottom: 0;">الإحصاء والاحتمالات</p>
-                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
-                        <a href="summaries/statistics/index.html" class="btn btn-primary w-100"
-                            style="flex: 1; padding: 0.5rem; font-size: 0.9rem;">الملخصات</a>
-                        <a href="exams/statistics/index.html" class="btn btn-secondary w-100"
-                            style="flex: 1; padding: 0.5rem; font-size: 0.9rem; text-decoration: none; display: inline-flex; justify-content: center; align-items: center;">الامتحانات</a>
-                    </div>
-                </div>
-
-                <!-- Subject 6 -->
-                <div class="glass-card item-card">
-                    <div class="card-icon" style="background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="12" y1="1" x2="12" y2="23"></line>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                        </svg>
-                    </div>
-                    <h3>Introduction to Economics</h3>
-                    <p style="margin-bottom: 0;">مقدمه ف الاقتصاد</p>
-                    <div class="subject-actions mt-3" style="display: flex; gap: 10px; margin-top: 20px;">
-                        <a href="summaries/economics/index.html" class="btn btn-primary w-100"
-                            style="flex: 1; padding: 0.5rem; font-size: 0.9rem;">الملخصات</a>
-                        <a href="exams/economics/index.html" class="btn btn-secondary w-100"
-                            style="flex: 1; padding: 0.5rem; font-size: 0.9rem; text-decoration: none; display: inline-flex; justify-content: center; align-items: center;">الامتحانات</a>
+                    <div class="level-actions">
+                        <a href="level2-term1.html" class="btn btn-primary w-100" style="display: flex; justify-content: center; align-items: center;">الترم الأول</a>
+                        <a href="level2-term2.html" class="btn btn-secondary w-100" style="display: flex; justify-content: center; align-items: center;">الترم الثاني</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
+<!-- Footer -->
         <footer class="glass-footer">
             <p dir="ltr" class="footer-content">
                 <span>Developed By</span>

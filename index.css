@@ -195,6 +195,7 @@ body {
 }
 
 .btn {
+    text-decoration: none;
     padding: 1.1rem 2.2rem;
     border-radius: 12px;
     font-size: 1.1rem;
@@ -658,6 +659,7 @@ code {
     }
 
     .btn {
+    text-decoration: none;
         width: 100%;
         padding: 1rem 1.5rem;
     }
@@ -774,4 +776,85 @@ code {
         transform: translateY(-20vh) rotate(360deg) scale(1.2);
         opacity: 0;
     }
+}
+/* Levels Grid & Cards */
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.level-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    padding: 3rem 2.5rem;
+}
+
+.level-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(111, 45, 189, 0.25), 0 0 20px rgba(76, 201, 240, 0.2);
+    border-color: rgba(76, 201, 240, 0.4);
+}
+
+.level-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.level-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+.level-header h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.level-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+}
+
+/* Change Level Button */
+.change-level-btn {
+    color: var(--accent) !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(247, 37, 133, 0.1);
+    padding: 0.4rem 1rem !important;
+    border-radius: 8px;
+    border: 1px solid rgba(247, 37, 133, 0.3);
+}
+.change-level-btn:hover {
+    background: rgba(247, 37, 133, 0.2);
+}
+.change-level-btn::after {
+    display: none !important;
 }

@@ -3,6 +3,31 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Smart UX: Remember selected level/term
+    const isPortal = document.getElementById('levels') !== null;
+    
+    if (isPortal) {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('change') === 'true') {
+            localStorage.removeItem('preferredTerm');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else {
+            const savedTerm = localStorage.getItem('preferredTerm');
+            if (savedTerm) {
+                // Because we are at the root, savedTerm (e.g. 'level1-term2.html') resolves correctly.
+                window.location.replace(savedTerm);
+            }
+        }
+    } else {
+        const path = window.location.pathname;
+        if (path.includes('level') && path.endsWith('.html')) {
+            const fileName = path.split('/').pop();
+            if (fileName) {
+                localStorage.setItem('preferredTerm', fileName);
+            }
+        }
+    }
     // Elegant glow effect following mouse cursor over glass cards
     const cards = document.querySelectorAll('.glass-card');
 
