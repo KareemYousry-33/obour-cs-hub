@@ -360,7 +360,7 @@ code {
 /* Cards Grid */
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2.5rem;
 }
 
@@ -780,7 +780,7 @@ code {
 /* Levels Grid & Cards */
 .levels-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 3rem;
     max-width: 900px;
     margin: 0 auto;
@@ -862,7 +862,7 @@ code {
 /* Leaders Grid */
 .leaders-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 3rem;
     max-width: 900px;
     margin: 0 auto;
@@ -911,4 +911,17 @@ code {
     line-height: 1.6;
     font-size: 0.95rem;
     margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .leaders-grid, .levels-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .leader-card {
+        padding: 2rem 1.5rem;
+    }
+    .level-card {
+        padding: 2rem 1.5rem;
+    }
 }
