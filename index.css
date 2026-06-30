@@ -674,9 +674,17 @@ code {
         margin-top: 2rem;
     }
 
+    .glass-nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
     .nav-links {
-        display: none;
-        /* Add a hamburger menu for mobile later */
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        width: 100%;
     }
 
     .section-title {
