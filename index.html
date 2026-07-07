@@ -36,13 +36,19 @@
             </a>
         </div>
         <ul class="nav-links">
-            <li><a href="#home">الرئيسية</a></li>
-            <li><a href="#levels">المواد الدراسية</a></li>
+            <li><a href="news.html" style="color: var(--primary);">الأخبار والإعلانات</a></li>
+            <li><a href="#levels">اختر الفرقة</a></li>
         </ul>
     </nav>
 
     <!-- Main Content -->
     <main>
+        <!-- Latest News Banner -->
+        <div id="latest-news-banner" style="display: none; background: rgba(99, 102, 241, 0.15); border-bottom: 1px solid rgba(99, 102, 241, 0.3); padding: 0.8rem; text-align: center; color: var(--text-main); font-weight: 600; cursor: pointer;" onclick="location.href='news.html'">
+            <span style="background: var(--primary); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; margin-left: 0.5rem;">خبر هام</span>
+            <span id="banner-text"></span>
+        </div>
+
         <section id="home" class="hero">
             <div class="hero-content">
                 <span class="badge">بوابة علوم حاسب - معاهد العبور</span>
@@ -154,8 +160,8 @@
             <div class="leaders-grid">
                 <!-- Leader 1 -->
                 <div class="glass-card leader-card">
-                    <div class="leader-avatar" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <div class="leader-avatar" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); padding: 3px;">
+                        <img src="mikasa.png" alt="Eng. Jannah Al-Serafy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
                     <h3>Eng. Jannah Al-Serafy</h3>
                     <p class="role">مؤسسة الجروبات ومسؤولة المصادر</p>
@@ -164,8 +170,8 @@
 
                 <!-- Leader 2 -->
                 <div class="glass-card leader-card">
-                    <div class="leader-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <div class="leader-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 3px;">
+                        <img src="levi.png" alt="Eng. Kareem Yousry" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
                     <h3>Eng. Kareem Yousry</h3>
                     <p class="role">مطور الموقع ومسؤول المحتوى</p>
@@ -186,6 +192,27 @@
     </main>
 
     <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script>
+        // Fetch latest news for banner
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.supabaseClient) {
+                try {
+                    const { data, error } = await window.supabaseClient.storage.from('pdfs').download('data/bulletin.json');
+                    if (!error && data) {
+                        const text = await data.text();
+                        const news = JSON.parse(text);
+                        if (news && news.length > 0) {
+                            const latest = news[0];
+                            document.getElementById('banner-text').innerText = latest.title;
+                            document.getElementById('latest-news-banner').style.display = 'block';
+                        }
+                    }
+                } catch(e) {}
+            }
+        });
+    </script>
 </body>
 
 </html>

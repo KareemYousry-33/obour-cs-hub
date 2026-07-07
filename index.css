@@ -1,12 +1,12 @@
 :root {
-    --bg-color: #0b0c10;
-    --glass-bg: rgba(30, 32, 40, 0.4);
-    --glass-border: rgba(255, 255, 255, 0.05);
-    --primary: #6f2dbd;
-    --secondary: #4cc9f0;
-    --accent: #f72585;
-    --text-main: #ffffff;
-    --text-muted: #a0aab2;
+    --bg-color: #09090b;
+    --glass-bg: rgba(24, 24, 27, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --primary: #6366f1;
+    --secondary: #0ea5e9;
+    --accent: #d946ef;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
 }
 
 * {
@@ -19,9 +19,9 @@
 
 body {
     background-color: var(--bg-color);
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    background: radial-gradient(circle at top right, #1e1b4b 0%, #09090b 40%), radial-gradient(circle at bottom left, #082f49 0%, #09090b 40%);
     color: var(--text-main);
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Outfit', 'Cairo', sans-serif;
     overflow-x: hidden;
     min-height: 100vh;
 }
@@ -213,51 +213,47 @@ body {
 
 /* Primary Button (Summaries) */
 .btn-primary {
-    border: 1px solid rgba(76, 201, 240, 0.3);
-    /* Subtle blue border */
+    background: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.1);
 }
 
 .btn-primary:hover {
-    background: rgba(76, 201, 240, 0.15);
-    /* Light blue hover */
-    border-color: rgba(76, 201, 240, 0.8);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(76, 201, 240, 0.2);
+    background: rgba(14, 165, 233, 0.2);
+    border-color: rgba(14, 165, 233, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.25);
 }
 
 /* Secondary Button (Exams) */
 .btn-secondary {
-    border: 1px solid rgba(247, 37, 133, 0.3);
-    /* Subtle pink border */
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.1);
 }
 
 .btn-secondary:hover {
-    background: rgba(247, 37, 133, 0.15);
-    /* Light pink hover */
-    border-color: rgba(247, 37, 133, 0.8);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(247, 37, 133, 0.2);
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
 }
 
-/* Modern Mobile Click/Tap Animation */
+/* Modern Hover Interaction (Removed scale effect to fix backwards push issue) */
 .btn:active,
-.glass-card:active,
-.file-card:active,
-.download-btn:active,
 .subject-actions a:active {
-    transform: scale(0.96) !important;
-    transition: transform 0.1s ease !important;
+    filter: brightness(0.9);
 }
 
 /* Glass Mockup Card */
 .glass-card {
-    background: rgba(20, 22, 30, 0.4);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--glass-bg);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 2.5rem;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
     position: relative;
     overflow: hidden;
 }
@@ -370,13 +366,12 @@ code {
     display: flex;
     flex-direction: column;
     z-index: 2;
-    /* To sit above the glow */
 }
 
 .item-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(111, 45, 189, 0.25), 0 0 20px rgba(76, 201, 240, 0.2);
-    border-color: rgba(76, 201, 240, 0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(99, 102, 241, 0.15), 0 0 20px rgba(14, 165, 233, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .card-icon {
@@ -486,7 +481,7 @@ code {
 .glass-footer {
     text-align: center;
     padding: 2.5rem 2rem;
-    background: rgba(10, 11, 16, 0.7);
+    background: rgba(9, 9, 11, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-top: 1px solid rgba(255, 255, 255, 0.05);

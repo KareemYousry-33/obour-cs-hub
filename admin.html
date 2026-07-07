@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | ObourCS Hub</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css?v=2">
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <style>
+        .admin-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-family: 'Outfit', 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-control option {
+            background-color: #0a0b10;
+            color: white;
+        }
+        
+        #dashboard-section {
+            display: block;
+        }
+        
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .status-message {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .success { color: #84fab0; }
+        .error { color: #ff9a9e; }
+        
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 5px 15px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animated Shapes -->
+    <div class="background-elements">
+        <div class="blob shape-1"></div>
+        <div class="blob shape-2"></div>
+    </div>
+
+    <!-- Dashboard Sections Wrapper -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 1rem; width: 100%;">
+        
+        <!-- Files Management Section -->
+        <div id="dashboard-section" class="admin-container glass-card" style="margin: 0; width: 100%;">
+            <h2 class="section-title text-center" style="margin-bottom: 2rem; font-size: 2rem;">إدارة <span class="gradient-text">الملفات</span></h2>
+            
+            <form id="upload-form">
+                <div class="form-group">
+                    <label>الفرقة والترم</label>
+                    <select id="level-term" class="form-control" required>
+                        <option value="" disabled selected>اختر الفرقة والترم...</option>
+                        <option value="level1-term1">الفرقة الأولى - الترم الأول</option>
+                        <option value="level1-term2">الفرقة الأولى - الترم الثاني</option>
+                        <option value="level2-term1">الفرقة الثانية - الترم الأول</option>
+                        <option value="level2-term2">الفرقة الثانية - الترم الثاني</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>المادة الدراسية</label>
+                    <select id="subject" class="form-control" required disabled>
+                        <option value="" disabled selected>اختر المادة...</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>نوع الملف</label>
+                    <select id="file-type" class="form-control" required disabled>
+                        <option value="" disabled selected>اختر النوع...</option>
+                        <option value="summary">ملخص (Summary)</option>
+                        <option value="exam">امتحان (Exam)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="file-name-group" style="display: none;">
+                    <label>اسم الملف (اختياري - يظهر للطلاب)</label>
+                    <input type="text" id="custom-file-name" class="form-control" placeholder="مثال: فاينل 2024 أو ملخص ميدتيرم">
+                </div>
+
+                <div class="form-group">
+                    <label>ملف الـ PDF</label>
+                    <input type="file" id="pdf-file" class="form-control" accept="application/pdf" style="padding: 0.7rem;" disabled>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <button type="submit" id="upload-btn" class="btn btn-primary w-100" disabled>رفع الملف</button>
+                </div>
+
+                <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;" id="files-list-section" style="display: none;">
+                    <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 1rem;">الملفات المرفوعة</h3>
+                    <div id="uploaded-files-container" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">اختر المادة والنوع لعرض الملفات...</p>
+                    </div>
+                </div>
+                
+                <div class="progress-bar-container mt-3" id="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                
+                <div id="upload-status" class="status-message"></div>
+            </form>
+        </div>
+
+        <!-- News Management Section -->
+        <div id="news-section" class="admin-container glass-card" style="margin: 0; width: 100%;">
+            <h2 class="section-title text-center" style="margin-bottom: 2rem; font-size: 2rem;">إدارة <span class="gradient-text">الأخبار</span></h2>
+            
+            <form id="news-form">
+                <div class="form-group">
+                    <label>عنوان الخبر</label>
+                    <input type="text" id="news-title" class="form-control" required placeholder="مثال: تأجيل محاضرة الداتا بيز">
+                </div>
+                
+                <div class="form-group">
+                    <label>التفاصيل</label>
+                    <textarea id="news-content" class="form-control" required placeholder="اكتب تفاصيل الخبر هنا..." rows="4" style="resize: vertical; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>اسم الناشر (اختياري)</label>
+                    <input type="text" id="news-author" class="form-control" placeholder="مثال: Eng. Kareem Yousry">
+                </div>
+                
+                <button type="submit" id="publish-news-btn" class="btn btn-primary w-100" style="margin-top: 1rem; background: rgba(247, 37, 133, 0.1); border-color: rgba(247, 37, 133, 0.3);">نشر الخبر</button>
+                
+                <div id="news-status" class="status-message"></div>
+            </form>
+
+            <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+                <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 1rem;">الأخبار المنشورة حالياً</h3>
+                <div id="news-items-container" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">جاري تحميل الأخبار...</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Supabase SDK & Config -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رفع جماعي للملفات | ObourCS Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css?v=2">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 4rem auto;
+            background: rgba(20, 22, 30, 0.6);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .log-box {
+            background: #000;
+            color: #0f0;
+            padding: 1rem;
+            border-radius: 8px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            text-align: left;
+            direction: ltr;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob shape-1"></div>
+        <div class="blob shape-2"></div>
+    </div>
+
+    <div class="container">
+        <h2 style="color: var(--text-main); margin-bottom: 1rem;">أداة الرفع الجماعي (Migration Tool)</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">هذه الأداة صممت خصيصاً لرفع كل ملفاتك القديمة (التي في مجلدات exams و summaries) دفعة واحدة إلى قاعدة البيانات بنفس ترتيبها ومسمياتها.</p>
+        
+        <div style="background: rgba(247, 37, 133, 0.1); border: 1px solid rgba(247, 37, 133, 0.3); padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
+            <strong style="color: var(--accent);">كيفية الاستخدام:</strong>
+            <ol style="color: var(--text-main); margin-top: 0.5rem; padding-right: 1.5rem;">
+                <li>اضغط على الزر بالأسفل.</li>
+                <li>اختر المجلد الرئيسي للمشروع (<code>obour-cs-hub</code>).</li>
+                <li>وافق على صلاحية القراءة للمتصفح.</li>
+                <li>انتظر حتى ينتهي الرفع بالكامل.</li>
+            </ol>
+        </div>
+
+        <input type="file" id="folder-input" webkitdirectory directory multiple style="display: none;">
+        <button onclick="document.getElementById('folder-input').click()" class="btn btn-primary w-100" style="padding: 1rem; font-size: 1.2rem;">اختر مجلد المشروع لرفع الملفات</button>
+        
+        <div class="progress-bar-container mt-3" id="progress-container" style="display: none; margin-top: 2rem;">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <p id="progress-text" style="text-align: center; color: var(--text-main); margin-top: 0.5rem; font-weight: bold;"></p>
+
+        <div class="log-box" id="log-box">
+            > Waiting for folder selection...
+        </div>
+    </div>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script>
+        const folderInput = document.getElementById('folder-input');
+        const logBox = document.getElementById('log-box');
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+
+        function log(msg) {
+            logBox.innerHTML += `<div>> ${msg}</div>`;
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        folderInput.addEventListener('change', async (e) => {
+            const allFiles = Array.from(e.target.files);
+            
+            // Filter files: only PDFs inside exams/ or summaries/
+            const pdfsToUpload = allFiles.filter(file => {
+                const path = file.webkitRelativePath; // e.g. "obour-cs-hub/exams/data_structures/final.pdf"
+                return (path.includes('/exams/') || path.includes('/summaries/')) && path.endsWith('.pdf');
+            });
+
+            if (pdfsToUpload.length === 0) {
+                log('No PDFs found in exams/ or summaries/ folders.');
+                return;
+            }
+
+            log(`Found ${pdfsToUpload.length} PDFs to upload. Starting...`);
+            progressContainer.style.display = 'block';
+            
+            let successCount = 0;
+            let errorCount = 0;
+
+            for (let i = 0; i < pdfsToUpload.length; i++) {
+                const file = pdfsToUpload[i];
+                
+                // path looks like "obour-cs-hub/exams/data_structures/final.pdf"
+                // we want "exams/data_structures/final.pdf"
+                const parts = file.webkitRelativePath.split('/');
+                const rootIndex = parts.findIndex(p => p === 'exams' || p === 'summaries');
+                
+                if (rootIndex === -1) continue; // Should not happen due to filter
+                
+                const uploadPath = parts.slice(rootIndex).join('/');
+                
+                log(`Uploading: ${uploadPath}...`);
+                
+                const { error } = await window.supabaseClient.storage
+                    .from('pdfs')
+                    .upload(uploadPath, file, {
+                        cacheControl: '3600',
+                        upsert: true
+                    });
+                
+                if (error) {
+                    log(`<span style="color:red">Error uploading ${uploadPath}: ${error.message}</span>`);
+                    errorCount++;
+                } else {
+                    log(`Success: ${uploadPath}`);
+                    successCount++;
+                }
+
+                // Update progress
+                const percent = Math.round(((i + 1) / pdfsToUpload.length) * 100);
+                progressBar.style.width = percent + '%';
+                progressText.innerText = `${i + 1} / ${pdfsToUpload.length} (${percent}%)`;
+            }
+
+            log(`<b>Done!</b> Successfully uploaded: ${successCount}. Errors: ${errorCount}.`);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأخبار والإعلانات | ObourCS Hub</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css?v=3">
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        .news-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            min-height: calc(100vh - 250px);
+        }
+        
+        .news-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
+        }
+        
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+        
+        .news-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+        
+        .news-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            white-space: pre-wrap;
+        }
+        
+        .news-author {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--secondary);
+            font-weight: 600;
+            background: rgba(14, 165, 233, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+        
+        .news-author svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .loading-news {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        
+        .no-news {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--glass-bg);
+            border: 1px dashed rgba(255,255,255,0.2);
+            border-radius: 16px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animated Shapes -->
+    <div class="background-elements">
+        <div class="blob shape-1"></div>
+        <div class="blob shape-2"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="glass-nav">
+        <div class="logo" dir="ltr">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; gap: 0.5rem; align-items: center;">
+                <span class="en-logo">ObourCS</span>
+                <span class="ar-logo">Hub</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="news-container">
+        <h1 class="section-title text-center" style="margin-bottom: 3rem; font-size: 2.5rem;">أحدث <span class="gradient-text">الأخبار والإعلانات</span></h1>
+        
+        <div id="news-feed">
+            <div class="loading-news">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+                <p style="margin-top: 1rem;">جاري تحميل الأخبار...</p>
+                <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <p dir="ltr" class="footer-content">
+            <span>Developed By</span>
+            <a href="#" class="developer-link">
+                <span class="developer-name">Eng. Kareem Yousry</span>
+            </a>
+        </p>
+    </footer>
+
+    <!-- Supabase Configuration -->
+    <script src="supabase-config.js"></script>
+    <!-- News Logic -->
+    <script src="news.js"></script>
+</body>
+</html>
