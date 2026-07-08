@@ -82,8 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         'level2-term1': [
             { id: 'data_structures', name: 'هياكل البيانات (Data Structures)' },
-            { id: 'logic_design', name: 'التصميم المنطقي (Logic Design)' },
-            { id: 'intro_sw_eng', name: 'مقدمة هندسة البرمجيات' },
             { id: 'operational_research', name: 'بحوث العمليات (OR)' },
             { id: 'human_rights', name: 'حقوق الإنسان' },
             { id: 'electronics', name: 'إلكترونيات' },
