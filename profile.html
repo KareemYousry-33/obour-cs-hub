@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ObourCS Hub | البروفايل</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css?v=2">
+    <style>
+        .profile-container {
+            max-width: 600px;
+            margin: 5rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .current-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            object-fit: cover;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 15px;
+            margin: 2rem 0;
+        }
+
+        .avatar-option {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: 0.3s;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .avatar-option:hover {
+            transform: scale(1.1);
+        }
+
+        .avatar-option.selected {
+            border-color: #27c93f;
+            box-shadow: 0 0 15px rgba(39, 201, 63, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animated Shapes -->
+    <div class="background-elements">
+        <div class="blob shape-1"></div>
+        <div class="blob shape-2"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="glass-nav">
+        <div class="logo" dir="ltr">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; gap: 0.5rem; align-items: center;">
+                <span class="en-logo">ObourCS</span>
+                <span class="ar-logo">Hub</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="profile-container glass-card">
+            <h2 class="section-title" style="margin-bottom: 1rem;">إعدادات <span class="gradient-text">البروفايل</span></h2>
+            
+            <img id="current-avatar-img" src="" alt="Avatar" class="current-avatar">
+            <h3 id="current-name-display" style="color: var(--text-main); margin-bottom: 2rem;">جاري التحميل...</h3>
+
+            <div style="text-align: right; margin-bottom: 2rem;">
+                <label style="color: var(--secondary); margin-bottom: 0.5rem; display: block; font-weight: bold; font-size: 1.1rem;">تغيير الاسم:</label>
+                <input type="text" id="profile-name-input" class="form-control" placeholder="اكتب اسمك الجديد هنا..." style="font-size: 1.1rem;">
+            </div>
+
+            <div style="text-align: right; margin-bottom: 1rem;">
+                <label style="color: var(--secondary); margin-bottom: 0.5rem; display: block; font-weight: bold; font-size: 1.1rem;">اختار صورتك (أفاتار):</label>
+                <div class="avatar-grid" id="avatar-grid">
+                    <!-- Avatars will be injected here via JS -->
+                </div>
+            </div>
+
+            <div id="profile-status" class="feedback-status" style="margin-bottom: 1rem;"></div>
+            <button class="btn btn-primary w-100" onclick="saveProfile()">حفظ التعديلات 💾</button>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script>
+        let currentUser = null;
+        let selectedAvatarUrl = "";
+
+        // Anime/Cartoon avatars with forced light skin tones
+        const avatarSeeds = [
+            "Felix", "Aneka", "Sam", "Jude", "Leo", "Mia", "Zoe", "Max", 
+            "Loki", "Coco", "Milo", "Bella", "Nala", "Simba", "Chloe", "Oreo", "Garfield", "Gizmo",
+            "Mimi", "Kiki", "Luna", "Sasha", "Oliver", "Finn"
+        ];
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await checkSession();
+            renderAvatarOptions();
+        });
+
+        async function getClient() {
+            let client = window.supabaseClient;
+            if (!client && window.supabase) {
+                client = window.supabase.createClient('https://iyggxbxvjhsnhszfpijv.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5Z2d4Ynh2amhzbmhzemZwaWp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzNTM5ODIsImV4cCI6MjA5ODkyOTk4Mn0.54nO2KVzo9me_X8EvnMpv8oDyxRAwa7l8lfR7S4Ka7A');
+                window.supabaseClient = client;
+            }
+            return client;
+        }
+
+        async function checkSession() {
+            const client = await getClient();
+            const { data: { session } } = await client.auth.getSession();
+            
+            if (!session) {
+                alert("لازم تسجل دخول الأول!");
+                window.location.href = "index.html";
+                return;
+            }
+
+            currentUser = session.user;
+            const name = currentUser.user_metadata?.full_name || currentUser.user_metadata?.name || currentUser.email.split('@')[0];
+            const avatar = currentUser.user_metadata?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=4facfe&color=fff&rounded=true`;
+            
+            selectedAvatarUrl = avatar;
+            
+            document.getElementById('current-avatar-img').src = avatar;
+            document.getElementById('current-name-display').innerText = name;
+            document.getElementById('profile-name-input').value = name;
+        }
+
+        function renderAvatarOptions() {
+            const grid = document.getElementById('avatar-grid');
+            let html = '';
+            
+            avatarSeeds.forEach(seed => {
+                // Using 'lorelei' which has beautiful anime styles and generally lighter skin tones
+                const url = `https://api.dicebear.com/9.x/lorelei/svg?seed=${seed}`;
+                html += `<img src="${url}" class="avatar-option" onclick="selectAvatar('${url}', this)">`;
+            });
+            
+            grid.innerHTML = html;
+        }
+
+        function selectAvatar(url, element) {
+            selectedAvatarUrl = url;
+            
+            // Remove selected class from all
+            const options = document.querySelectorAll('.avatar-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked
+            element.classList.add('selected');
+            
+            // Update preview
+            document.getElementById('current-avatar-img').src = url;
+        }
+
+        async function saveProfile() {
+            const newName = document.getElementById('profile-name-input').value.trim();
+            const statusDiv = document.getElementById('profile-status');
+            
+            if (!newName) {
+                statusDiv.innerHTML = '<span style="color: #ff5f56;">لازم تكتب اسم!</span>';
+                return;
+            }
+
+            statusDiv.innerHTML = '<span style="color: var(--secondary);">جاري الحفظ... ⏳</span>';
+            const client = await getClient();
+            
+            const { data, error } = await client.auth.updateUser({
+                data: { 
+                    full_name: newName,
+                    avatar_url: selectedAvatarUrl
+                }
+            });
+
+            if (error) {
+                statusDiv.innerHTML = '<span style="color: #ff5f56;">حصل خطأ: ' + error.message + '</span>';
+            } else {
+                statusDiv.innerHTML = '<span style="color: #27c93f;">تم الحفظ بنجاح! 🚀</span>';
+                document.getElementById('current-name-display').innerText = newName;
+                
+                setTimeout(() => {
+                    statusDiv.innerHTML = '';
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>

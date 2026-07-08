@@ -38,14 +38,21 @@
         <ul class="nav-links">
             <li><a href="news.html" style="color: var(--primary);">الأخبار والإعلانات</a></li>
             <li><a href="#levels">اختر الفرقة</a></li>
+            <li id="nav-user-section" style="margin-right: auto; padding-right: 15px;">
+                <!-- User Profile / Login will be injected here -->
+            </li>
         </ul>
     </nav>
 
     <!-- Main Content -->
     <main>
         <!-- Latest News Banner -->
-        <div id="latest-news-banner" style="display: none; background: rgba(99, 102, 241, 0.15); border-bottom: 1px solid rgba(99, 102, 241, 0.3); padding: 0.8rem; text-align: center; color: var(--text-main); font-weight: 600; cursor: pointer;" onclick="location.href='news.html'">
-            <span style="background: var(--primary); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; margin-left: 0.5rem;">خبر هام</span>
+        <div id="latest-news-banner"
+            style="display: none; background: rgba(99, 102, 241, 0.15); border-bottom: 1px solid rgba(99, 102, 241, 0.3); padding: 0.8rem; text-align: center; color: var(--text-main); font-weight: 600; cursor: pointer;"
+            onclick="location.href='news.html'">
+            <span
+                style="background: var(--primary); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; margin-left: 0.5rem;">خبر
+                هام</span>
             <span id="banner-text"></span>
         </div>
 
@@ -54,7 +61,7 @@
                 <span class="badge">بوابة علوم حاسب - معاهد العبور</span>
                 <h1 class="title">ملخصات + امتحانات سابقة<br><span class="gradient-text">لكل مواد علوم الحاسب</span>
                 </h1>
-                
+
                 <div class="students-notice" style="
                     background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(247, 37, 133, 0.15) 100%);
                     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -71,8 +78,10 @@
                     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
                     max-width: 100%;
                 ">
-                    <div style="display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.25rem;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <div
+                        style="display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.25rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                             <circle cx="9" cy="7" r="4"></circle>
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -80,10 +89,13 @@
                         </svg>
                         <span>من الطلاب للطلاب</span>
                     </div>
-                    <span style="font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem; color: #a6c1ee; letter-spacing: 2px;">FROM STUDENTS TO STUDENTS</span>
+                    <span
+                        style="font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem; color: #a6c1ee; letter-spacing: 2px;">FROM
+                        STUDENTS TO STUDENTS</span>
                 </div>
 
-                <p class="subtitle" style="margin-top: 0; font-size: 1.1rem; max-width: 90%;">منصة تجمع لك المصادر الدراسية بشكل منظم عشان تنجز وقتك وتذاكر بذكاء.</p>
+                <p class="subtitle" style="margin-top: 0; font-size: 1.1rem; max-width: 90%;">منصة تجمع لك المصادر
+                    الدراسية بشكل منظم عشان تنجز وقتك وتذاكر بذكاء.</p>
                 <div class="cta-group">
                     <button class="btn btn-primary" onclick="location.href='#levels'"
                         style="display: flex; align-items: center; gap: 0.8rem; justify-content: center;">
@@ -136,7 +148,7 @@
         </section>
 
         <!-- Subjects Section -->
-                <!-- Levels Section -->
+        <!-- Levels Section -->
         <section id="levels" class="section-padding">
             <div class="section-header">
                 <h2 class="section-title">الفرق <span class="gradient-text">الدراسية</span></h2>
@@ -153,11 +165,19 @@
                         <h3>الفرقة الأولى</h3>
                     </div>
                     <div class="level-actions">
-                        <a href="https://drive.google.com/drive/folders/1DLbt5-I8e7lMgcUKRkz1ujNa6A78L4b5" target="_blank" class="btn btn-secondary w-100" style="display: flex; justify-content: center; align-items: center; gap: 8px;">
+                        <a href="https://drive.google.com/drive/folders/1DLbt5-I8e7lMgcUKRkz1ujNa6A78L4b5"
+                            target="_blank" class="btn btn-secondary w-100"
+                            style="display: flex; justify-content: center; align-items: center; gap: 8px;">
                             الترم الأول (Drive)
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
                         </a>
-                        <a href="level1-term2.html" class="btn btn-primary w-100" style="display: flex; justify-content: center; align-items: center;">الترم الثاني</a>
+                        <a href="level1-term2.html" class="btn btn-primary w-100"
+                            style="display: flex; justify-content: center; align-items: center;">الترم الثاني</a>
                     </div>
                 </div>
 
@@ -170,8 +190,10 @@
                         <h3>الفرقة الثانية</h3>
                     </div>
                     <div class="level-actions">
-                        <a href="level2-term1.html" class="btn btn-primary w-100" style="display: flex; justify-content: center; align-items: center;">الترم الأول</a>
-                        <a href="level2-term2.html" class="btn btn-secondary w-100" style="display: flex; justify-content: center; align-items: center;">الترم الثاني</a>
+                        <a href="level2-term1.html" class="btn btn-primary w-100"
+                            style="display: flex; justify-content: center; align-items: center;">الترم الأول</a>
+                        <a href="level2-term2.html" class="btn btn-secondary w-100"
+                            style="display: flex; justify-content: center; align-items: center;">الترم الثاني</a>
                     </div>
                 </div>
             </div>
@@ -181,35 +203,54 @@
         <!-- Batch Leaders Section -->
         <section id="leaders" class="section-padding">
             <div class="section-header">
-                <div style="display: inline-block; padding: 0.4rem 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50px; color: #fff; font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: 5px; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1.2rem; background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(217, 70, 239, 0.15) 100%); box-shadow: 0 4px 15px rgba(0,0,0,0.2); backdrop-filter: blur(5px);">Your King's Guard</div>
-                <h2 class="section-title" style="font-family: 'Outfit', sans-serif; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 3.5rem;">The <span class="gradient-text">Ackermans</span></h2>
+                <div
+                    style="display: inline-block; padding: 0.4rem 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50px; color: #fff; font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: 5px; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1.2rem; background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(217, 70, 239, 0.15) 100%); box-shadow: 0 4px 15px rgba(0,0,0,0.2); backdrop-filter: blur(5px);">
+                    Your King's Guard</div>
+                <h2 class="section-title"
+                    style="font-family: 'Outfit', sans-serif; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 3.5rem;">
+                    The <span class="gradient-text">Ackermans</span></h2>
                 <p class="section-subtitle">وراء هذا العمل مجهود مستمر لخدمة الدفعة وتوفير أفضل المصادر الدراسية.</p>
             </div>
 
             <div class="leaders-grid">
                 <!-- Leader 1 -->
                 <div class="glass-card leader-card">
-                    <div class="leader-avatar" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); padding: 3px;">
-                        <img src="mikasa.png" alt="Eng. Jannah Al-Serafy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    <div class="leader-avatar"
+                        style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); padding: 3px;">
+                        <img src="mikasa.png" alt="Eng. Jannah Al-Serafy"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
-                    <h3>Eng. Jannah Al-Serafy <span style="font-size: 0.75em; color: var(--primary); display: block; margin-top: 5px;">(Class's Guardian Angel)</span></h3>
+                    <h3>Eng. Jannah Al-Serafy <span
+                            style="font-size: 0.75em; color: var(--primary); display: block; margin-top: 5px;">(Class's
+                            Guardian Angel)</span></h3>
                     <p class="role">Leader - ليدر الدفعة</p>
-                    <p class="description">الخبير الفني والاستراتيجي والتكتيكي للدفعة والمؤسس الأساسي لحزب علوم الحاسب. لعبت دوراً محورياً في حل أزمة مادة التفاضل مع الدكاترة بصعوبة بالغة، ووفرت للدفعة اشتراكات Gemini مجانية لمدة سنة كاملة. دائماً سباقة بمصالح للطلاب وطرق مبتكرة لتسخير الموارد، ولا توجد معلومة تخفى عليها. وقفت بجانب زملائها خطوة بخطوة، لتكون بحق الملاك الحارس والسند الحقيقي للدفعة.</p>
+                    <p class="description">الخبير الفني والاستراتيجي والتكتيكي للدفعة والمؤسس الأساسي لحزب علوم الحاسب.
+                        لعبت دوراً محورياً في حل أزمة مادة التفاضل مع الدكاترة بصعوبة بالغة، ووفرت للدفعة اشتراكات
+                        Gemini مجانية لمدة سنة كاملة. دائماً سباقة بمصالح للطلاب وطرق مبتكرة لتسخير الموارد، ولا توجد
+                        معلومة تخفى عليها. وقفت بجانب زملائها خطوة بخطوة، لتكون بحق الملاك الحارس والسند الحقيقي للدفعة.
+                    </p>
                 </div>
 
                 <!-- Leader 2 -->
                 <div class="glass-card leader-card">
-                    <div class="leader-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 3px;">
-                        <img src="levi.png" alt="Eng. Kareem Yousry" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    <div class="leader-avatar"
+                        style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 3px;">
+                        <img src="levi.png" alt="Eng. Kareem Yousry"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
-                    <h3>Eng. Kareem Yousry <span style="font-size: 0.75em; color: var(--secondary); display: block; margin-top: 5px;">(Humanity's Strongest Developer)</span></h3>
+                    <h3>Eng. Kareem Yousry <span
+                            style="font-size: 0.75em; color: var(--secondary); display: block; margin-top: 5px;">(Humanity's
+                            Strongest Developer)</span></h3>
                     <p class="role">Vice Leader - فايس ليدر</p>
-                    <p class="description">العقل المدبر والمطور خلف هذه المنصة المتكاملة. سخر وقته وجهده وخبرته البرمجية لتصميم وتطوير هذا الموقع ليليق بطلاب علوم الحاسب. بفضل سعيه الدائم نحو التميز وإصراره على تسهيل العملية التعليمية، أصبحت هذه المنصة واقعاً ملموساً يخدم الدفعة بأكملها ويرتقي بمستواها الأكاديمي.</p>
+                    <p class="description">العقل المدبر والمطور خلف هذه المنصة المتكاملة. سخر وقته وجهده وخبرته البرمجية
+                        لتصميم وتطوير هذا الموقع ليليق بطلاب علوم الحاسب. بفضل سعيه الدائم نحو التميز وإصراره على تسهيل
+                        العملية التعليمية، أصبحت هذه المنصة واقعاً ملموساً يخدم الدفعة بأكملها ويرتقي بمستواها
+                        الأكاديمي.</p>
                 </div>
             </div>
         </section>
 
-<!-- Footer -->
+        <!-- Footer -->
         <footer class="glass-footer">
             <p dir="ltr" class="footer-content">
                 <span>Developed By</span>
@@ -220,8 +261,9 @@
         </footer>
 
         <!-- Feedback Floating Button & Modal -->
-        <button id="feedback-fab" class="feedback-fab" onclick="document.getElementById('feedback-modal').classList.add('active')">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="feedback-fab" class="feedback-fab" onclick="openFeedbackModal()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
             </svg>
         </button>
@@ -234,13 +276,30 @@
                     <p>عندك فيدباك؟ اقتراح؟ نكتة؟ اكتبها هنا وهتوصلنا من غير ما نعرف إنت مين!</p>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="feedback-name" placeholder="اسمك (اختياري - عشان الضحك 🕵️‍♂️)" class="form-control" style="margin-bottom: 0.5rem; text-align: right; background: rgba(0,0,0,0.4);" dir="auto">
-                    <input type="email" id="feedback-email" placeholder="الإيميل (إجباري - عشان نرد عليك 📧)" class="form-control" style="margin-bottom: 1rem; text-align: right; background: rgba(0,0,0,0.4);" dir="auto">
-                    <textarea id="feedback-text" placeholder="اكتب رسالتك هنا..." rows="4"></textarea>
+                    <textarea id="feedback-text" placeholder="اكتب رسالتك هنا بكل صراحة ومحدش هيعرف مين اللي كاتبها..." rows="4"></textarea>
                     <div id="feedback-status" class="feedback-status"></div>
+                    <button class="btn btn-primary w-100" onclick="submitFeedback()">إرسال الرسالة السحرية 🚀</button>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary w-100" onclick="submitFeedback()">إرسال الرسالة 🚀</button>
+            </div>
+        </div>
+
+        <!-- Global Auth Modal -->
+        <div id="global-auth-modal" class="feedback-modal-overlay" onclick="if(event.target === this) this.classList.remove('active')">
+            <div class="feedback-modal-content glass-card">
+                <button class="close-modal" onclick="document.getElementById('global-auth-modal').classList.remove('active')">&times;</button>
+                <div class="modal-header">
+                    <h3>تسجيل الدخول للمنصة 🚀</h3>
+                    <p>عشان نضمن جودة المنصة، لازم تسجل حسابك عشان تقدر تستخدم الخدمات.</p>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="global-auth-name" placeholder="اسمك الحقيقي 👤 (بيظهر في بروفايلك)" class="form-control" style="margin-bottom: 0.5rem; text-align: right; background: rgba(0,0,0,0.4);" dir="auto">
+                    <input type="email" id="global-auth-email" placeholder="الإيميل 📧" class="form-control" style="margin-bottom: 0.5rem; text-align: right; background: rgba(0,0,0,0.4);" dir="auto">
+                    <input type="password" id="global-auth-password" placeholder="كلمة المرور 🔒" class="form-control" style="margin-bottom: 1rem; text-align: right; background: rgba(0,0,0,0.4);" dir="auto">
+                    <div id="global-auth-status" class="feedback-status"></div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-primary" style="flex: 1;" onclick="globalLogin()">تسجيل الدخول</button>
+                        <button class="btn" style="flex: 1; background: rgba(255,255,255,0.1);" onclick="globalSignup()">إنشاء حساب جديد</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -251,6 +310,13 @@
     <script src="supabase-config.js"></script>
     <script>
         // Fetch latest news for banner
+        let currentUser = null;
+
+        // Auto check session on load
+        document.addEventListener('DOMContentLoaded', () => {
+            checkSession();
+        });
+
         document.addEventListener('DOMContentLoaded', async () => {
             if (window.supabaseClient) {
                 try {
@@ -264,21 +330,129 @@
                             document.getElementById('latest-news-banner').style.display = 'block';
                         }
                     }
-                } catch(e) {}
+                } catch (e) { }
             }
         });
-    </script>
-    <script>
-        // Anonymous Feedback Submission
+
+        async function openFeedbackModal() {
+            if (!currentUser) {
+                alert("لازم تسجل دخول الأول في الموقع عشان تقدر تبعت فيدباك وتستخدم مميزاتنا.");
+                openGlobalAuth();
+                return;
+            }
+            document.getElementById('feedback-modal').classList.add('active');
+        }
+
+        function openGlobalAuth() {
+            document.getElementById('global-auth-modal').classList.add('active');
+        }
+
+        async function getClient() {
+            let client = window.supabaseClient;
+            if (!client && window.supabase) {
+                client = window.supabase.createClient('https://iyggxbxvjhsnhszfpijv.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5Z2d4Ynh2amhzbmhzemZwaWp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzNTM5ODIsImV4cCI6MjA5ODkyOTk4Mn0.54nO2KVzo9me_X8EvnMpv8oDyxRAwa7l8lfR7S4Ka7A');
+                window.supabaseClient = client;
+            }
+            return client;
+        }
+
+        async function checkSession() {
+            const client = await getClient();
+            if (!client) return;
+
+            const { data: { session } } = await client.auth.getSession();
+            const userSection = document.getElementById('nav-user-section');
+
+            if (session) {
+                currentUser = session.user;
+                const name = currentUser.user_metadata?.full_name || currentUser.user_metadata?.name || currentUser.email.split('@')[0];
+                const avatar = currentUser.user_metadata?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=4facfe&color=fff&rounded=true`;
+                
+                userSection.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 50px; border: 1px solid rgba(255,255,255,0.1);" onclick="window.location.href='profile.html'">
+                        <img src="${avatar}" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                        <span style="font-size: 0.95rem; color: var(--text-main); font-weight: 600;">${name}</span>
+                        <span style="font-size: 0.75rem; color: #ff5f56; margin-right: 5px; cursor: pointer;" title="تسجيل خروج" onclick="event.stopPropagation(); globalLogout()">🚪</span>
+                    </div>
+                `;
+            } else {
+                currentUser = null;
+                userSection.innerHTML = `
+                    <button class="btn btn-primary" style="padding: 0.4rem 1.2rem; font-size: 0.95rem;" onclick="openGlobalAuth()">دخول / تسجيل</button>
+                `;
+            }
+        }
+
+        async function globalLogin() {
+            const email = document.getElementById('global-auth-email').value.trim();
+            const password = document.getElementById('global-auth-password').value;
+            const status = document.getElementById('global-auth-status');
+            if(!email || !password) { status.innerHTML = '<span style="color: #ff5f56;">اكتب الإيميل والباسورد!</span>'; return; }
+            
+            status.innerHTML = '<span style="color: var(--secondary);">جاري الدخول...</span>';
+            const client = await getClient();
+            const { data, error } = await client.auth.signInWithPassword({ email, password });
+            
+            if (error) {
+                status.innerHTML = '<span style="color: #ff5f56;">خطأ: ' + error.message + '</span>';
+            } else {
+                status.innerHTML = '<span style="color: #27c93f;">تم الدخول بنجاح! 🚀</span>';
+                setTimeout(() => {
+                    document.getElementById('global-auth-modal').classList.remove('active');
+                    status.innerHTML = '';
+                    checkSession();
+                }, 1000);
+            }
+        }
+
+        async function globalSignup() {
+            const name = document.getElementById('global-auth-name').value.trim();
+            const email = document.getElementById('global-auth-email').value.trim();
+            const password = document.getElementById('global-auth-password').value;
+            const status = document.getElementById('global-auth-status');
+            
+            if(!name || !email || !password) { status.innerHTML = '<span style="color: #ff5f56;">لازم تكتب اسمك والإيميل والباسورد!</span>'; return; }
+            
+            status.innerHTML = '<span style="color: var(--secondary);">جاري إنشاء الحساب...</span>';
+            const client = await getClient();
+            const { data, error } = await client.auth.signUp({ 
+                email, 
+                password,
+                options: {
+                    data: {
+                        full_name: name
+                    }
+                }
+            });
+            
+            if (error) {
+                status.innerHTML = '<span style="color: #ff5f56;">خطأ: ' + error.message + '</span>';
+            } else {
+                status.innerHTML = '<span style="color: #27c93f;">تم التسجيل! أهلاً بيك يا هندسة.</span>';
+                setTimeout(() => {
+                    document.getElementById('global-auth-modal').classList.remove('active');
+                    status.innerHTML = '';
+                    checkSession();
+                }, 1500);
+            }
+        }
+
+        async function globalLogout() {
+            if (confirm("عايز تعمل تسجيل خروج؟")) {
+                const client = await getClient();
+                await client.auth.signOut();
+                checkSession();
+            }
+        }
+
+        // Anonymous Feedback Submission (Silent Tracking)
         async function submitFeedback() {
-            const nameInput = document.getElementById('feedback-name').value.trim();
-            const emailInput = document.getElementById('feedback-email').value.trim();
             const textInput = document.getElementById('feedback-text');
             const statusDiv = document.getElementById('feedback-status');
             const feedbackText = textInput.value.trim();
 
-            if (!emailInput) {
-                statusDiv.innerHTML = '<span style="color: #ff5f56;">لازم تكتب إيميلك عشان نقدر نرد عليك! 📧</span>';
+            if (!currentUser) {
+                statusDiv.innerHTML = '<span style="color: #ff5f56;">لازم تسجل دخول الأول! 📧</span>';
                 return;
             }
 
@@ -287,33 +461,17 @@
                 return;
             }
 
-            let client = window.supabaseClient;
-            if (!client && window.supabase) {
-                client = window.supabase.createClient('https://iyggxbxvjhsnhszfpijv.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5Z2d4Ynh2amhzbmhzemZwaWp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzNTM5ODIsImV4cCI6MjA5ODkyOTk4Mn0.54nO2KVzo9me_X8EvnMpv8oDyxRAwa7l8lfR7S4Ka7A');
-                window.supabaseClient = client;
-            }
-
+            const client = await getClient();
             if (!client) {
                 statusDiv.innerHTML = '<span style="color: #ff5f56;">في مشكلة في الاتصال بالسيرفر! (جرب تعمل Refresh)</span>';
                 return;
             }
+            statusDiv.innerHTML = '<span style="color: var(--secondary);">جاري الإرسال بسريّة تامة... 🤫</span>';
 
-            statusDiv.innerHTML = '<span style="color: var(--secondary);">جاري التشفير والإرسال... ⏳</span>';
+            const senderName = currentUser.user_metadata?.full_name || currentUser.user_metadata?.name || 'طالب مجهول';
+            const senderEmail = currentUser.email;
 
-            // Collect Tracking Info quietly
-            let ip = "Unknown IP";
-            try {
-                const ipRes = await fetch('https://api.ipify.org?format=json');
-                const ipData = await ipRes.json();
-                ip = ipData.ip;
-            } catch(e) {}
-            
-            const userAgent = navigator.userAgent;
-            const platform = navigator.platform || 'Unknown OS';
-            const senderName = nameInput ? nameInput : 'مجهول (Anonymous)';
-            const senderEmail = emailInput ? emailInput : 'لم يقم بكتابته';
-
-            const fullMessage = `👤 الاسم: ${senderName}\n📧 الإيميل: ${senderEmail}\n\n💬 الرسالة:\n${feedbackText}\n\n🕵️‍♂️ التتبع (سري للأدمن):\n- IP: ${ip}\n- الجهاز: ${userAgent}\n- النظام: ${platform}`;
+            const fullMessage = `💬 الرسالة:\n${feedbackText}\n\n========================\n👤 أرسلت بواسطة (سري):\nالاسم: ${senderName}\nالإيميل: ${senderEmail}`;
 
             const { data, error } = await client
                 .from('feedback')

@@ -1085,7 +1085,8 @@ code {
 }
 
 .feedback-modal-content textarea,
-.feedback-modal-content input {
+.feedback-modal-content input,
+.form-control {
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid var(--glass-border);
@@ -1098,7 +1099,8 @@ code {
 }
 
 .feedback-modal-content textarea:focus,
-.feedback-modal-content input:focus {
+.feedback-modal-content input:focus,
+.form-control:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
