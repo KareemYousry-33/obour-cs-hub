@@ -12,6 +12,33 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // UI Elements
     const dashboardSection = document.getElementById('dashboard-section');
+    const authOverlay = document.getElementById('auth-overlay');
+    const loginForm = document.getElementById('login-form');
+    const loginError = document.getElementById('login-error');
+    
+    // Auth Logic
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // بيانات الدخول الموحدة لكريم وجنة
+            if (email === 'jannah&kareem@obour.com' && password === 'admin123') {
+                authOverlay.style.display = 'none';
+                loginError.style.display = 'none';
+                // حفظ حالة تسجيل الدخول مؤقتاً في الجلسة الحالية
+                sessionStorage.setItem('isAdminLoggedIn', 'true');
+            } else {
+                loginError.style.display = 'block';
+            }
+        });
+
+        // التحقق مما إذا كان قد سجل الدخول بالفعل في الجلسة الحالية
+        if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
+            authOverlay.style.display = 'none';
+        }
+    }
     
     const uploadForm = document.getElementById('upload-form');
     const levelTermSelect = document.getElementById('level-term');
