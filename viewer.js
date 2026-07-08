@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const isExam = folderPath.startsWith('exams/');
-    const typeLabel = isExam ? 'امتحانات' : 'ملخصات';
+    const isVoice = folderPath.startsWith('voices/');
+    const typeLabel = isExam ? 'امتحانات' : (isVoice ? 'فويسات وريكوردات' : 'ملخصات');
 
     document.getElementById('page-title').innerText = `${typeLabel} ${subjectTitle}`;
     document.getElementById('page-subtitle').innerText = 'تصفح وحمل الملفات الخاصة بهذه المادة.';
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         // Filter out any hidden files or empty placeholders if needed
-        const files = data.filter(f => f.name !== '.emptyFolderPlaceholder' && f.name.endsWith('.pdf'));
+        const files = data.filter(f => f.name !== '.emptyFolderPlaceholder');
 
         if (files.length === 0) {
             emptyStateEl.style.display = 'block';
@@ -74,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 let sizeText = sizeKB > 1024 ? `${(sizeKB/1024).toFixed(2)} MB` : `${sizeKB} KB`;
 
                 // Try to prettify the name
-                let prettyName = file.name.replace('.pdf', '');
+                let prettyName = file.name.replace(/\.[^/.]+$/, ""); // removes extension
                 prettyName = prettyName.replace(/-/g, ' ').replace(/_/g, ' ');
                 
                 // Capitalize first letters of English names
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                         <div class="file-details">
                             <h3 dir="auto">${prettyName}</h3>
-                            <p>${sizeText} • PDF Document</p>
+                            <p>${sizeText} • ${file.name.split('.').pop().toUpperCase()} File</p>
                         </div>
                     </div>
                     <div class="file-actions">

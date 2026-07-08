@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const type = fileTypeSelect.value;
         if (!subject || !type) return null;
         
-        // Use "exams/subject" or "summaries/subject" instead of level-term/
-        const root = type === 'exam' ? 'exams' : 'summaries';
+        // Use "exams/subject", "summaries/subject", or "voices/subject"
+        const root = type === 'exam' ? 'exams' : (type === 'voice' ? 'voices' : 'summaries');
         return `${root}/${subject}`;
     }
 
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const files = data.filter(f => f.name !== '.emptyFolderPlaceholder' && f.name.endsWith('.pdf'));
+            const files = data.filter(f => f.name !== '.emptyFolderPlaceholder');
 
             if (files.length === 0) {
                 uploadedFilesContainer.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">لا توجد ملفات مرفوعة في هذا القسم.</p>';
@@ -252,8 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let finalFileName = file.name;
         if (customFileNameInput.value.trim() !== '') {
             let customName = customFileNameInput.value.trim();
-            if (!customName.toLowerCase().endsWith('.pdf')) {
-                customName += '.pdf';
+            // Get original extension
+            const originalExt = file.name.substring(file.name.lastIndexOf('.'));
+            if (!customName.toLowerCase().endsWith(originalExt.toLowerCase())) {
+                customName += originalExt;
             }
             finalFileName = customName;
         }
