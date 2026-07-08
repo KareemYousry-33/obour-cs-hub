@@ -406,6 +406,76 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initialize list on load
+    // Load and Display Feedback
+    const feedbackItemsContainer = document.getElementById('feedback-items-container');
+    
+    async function loadFeedback() {
+        if (!feedbackItemsContainer) return;
+        
+        try {
+            const { data, error } = await supabase
+                .from('feedback')
+                .select('*')
+                .order('created_at', { ascending: false });
+                
+            if (error) {
+                feedbackItemsContainer.innerHTML = '<p style="color: #ef4444; font-size: 0.9rem;">خطأ في تحميل الفيدباك: ' + error.message + '</p>';
+                return;
+            }
+            
+            if (!data || data.length === 0) {
+                feedbackItemsContainer.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">مفيش رسايل سرية لسة! 🥲</p>';
+                return;
+            }
+            
+            feedbackItemsContainer.innerHTML = '';
+            data.forEach(item => {
+                const dateObj = new Date(item.created_at);
+                const dateString = dateObj.toLocaleDateString('ar-EG');
+                const timeString = dateObj.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+                
+                const div = document.createElement('div');
+                div.style.cssText = 'background: rgba(217, 70, 239, 0.05); border: 1px solid rgba(217, 70, 239, 0.2); padding: 1rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.8rem;';
+                
+                // Escape HTML to prevent XSS
+                const safeFeedback = document.createElement('div');
+                safeFeedback.textContent = item.feedback;
+                
+                div.innerHTML = `
+                    <div style="color: var(--text-main); font-size: 1.05rem; white-space: pre-wrap;">${safeFeedback.innerHTML}</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        <span style="color: var(--text-muted); font-size: 0.8rem;">${dateString} • ${timeString}</span>
+                        <button onclick="deleteFeedback('${item.id || item.created_at}', '${item.id ? 'id' : 'created_at'}')" class="btn" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 0.3rem 0.6rem; font-size: 0.8rem;">حذف</button>
+                    </div>
+                `;
+                feedbackItemsContainer.appendChild(div);
+            });
+        } catch(e) {
+            feedbackItemsContainer.innerHTML = '<p style="color: #ef4444; font-size: 0.9rem;">حدث خطأ غير متوقع</p>';
+        }
+    }
+
+    // Delete Feedback
+    window.deleteFeedback = async function(id, columnName) {
+        if (!confirm('متأكد إنك عايز تحذف الفيدباك ده؟')) return;
+        
+        try {
+            const { error } = await supabase
+                .from('feedback')
+                .delete()
+                .eq(columnName, id);
+                
+            if (error) {
+                alert('حصل خطأ: ' + error.message);
+            } else {
+                loadFeedback();
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    // Initialize lists on load
     loadAdminNews();
+    loadFeedback();
 });
