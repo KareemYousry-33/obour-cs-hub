@@ -331,8 +331,24 @@
         // Fetch latest news for banner
         let currentUser = null;
 
-        // Auto check session on load
-        document.addEventListener('DOMContentLoaded', () => {
+        // Auto check session on load and listen to auth changes
+        document.addEventListener('DOMContentLoaded', async () => {
+            const client = await getClient();
+            if (client) {
+                client.auth.onAuthStateChange((event, session) => {
+                    if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION' || event === 'SIGNED_OUT') {
+                        checkSession();
+                        
+                        // Close modal if it's open and user just signed in
+                        if (event === 'SIGNED_IN') {
+                            const modal = document.getElementById('global-auth-modal');
+                            if (modal && modal.classList.contains('active')) {
+                                modal.classList.remove('active');
+                            }
+                        }
+                    }
+                });
+            }
             checkSession();
         });
 
