@@ -1,4 +1,4 @@
-const CACHE_NAME = 'obourcs-hub-v10';
+const CACHE_NAME = 'obourcs-hub-v11';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -9,6 +9,8 @@ const ASSETS_TO_CACHE = [
 ];
 
 self.addEventListener('install', (event) => {
+    // Force the new service worker to take over immediately
+    self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
@@ -18,16 +20,29 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+    // Network First strategy: Always try to fetch from network first so users get the latest update
     event.respondWith(
-        caches.match(event.request)
-            .then((response) => {
-                // Return cached page or fetch from network
-                return response || fetch(event.request);
+        fetch(event.request)
+            .then(response => {
+                // If the request is successful, update the cache
+                if (response && response.status === 200 && response.type === 'basic') {
+                    const responseToCache = response.clone();
+                    caches.open(CACHE_NAME)
+                        .then(cache => cache.put(event.request, responseToCache));
+                }
+                return response;
+            })
+            .catch(() => {
+                // If network fails (offline), fallback to cache
+                return caches.match(event.request);
             })
     );
 });
 
 self.addEventListener('activate', (event) => {
+    // Take control of the page immediately without requiring a refresh
+    event.waitUntil(self.clients.claim());
+    
     const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
         caches.keys().then((cacheNames) => {
