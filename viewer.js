@@ -13,7 +13,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const typeLabel = isExam ? 'امتحانات' : (isVoice ? 'فويسات وريكوردات' : 'ملخصات');
 
     document.getElementById('page-title').innerText = `${typeLabel} ${subjectTitle}`;
-    document.getElementById('page-subtitle').innerText = 'تصفح وحمل الملفات الخاصة بهذه المادة.';
+    if (isExam) {
+        document.getElementById('page-subtitle').innerHTML = 'تصفح وحمل الملفات الخاصة بهذه المادة.<br><br><span style="display:inline-block; margin-top: 15px; padding: 5px 15px; background: rgba(220, 38, 38, 0.15); border-radius: 8px; color: #ef4444; font-weight: 800; font-size: 1.2rem; letter-spacing: 0.5px; border: 1px solid rgba(220, 38, 38, 0.3);">⚔️ كرسوا قلوبكم! ⚔️<br><span style="font-size: 0.9rem; font-weight: 400; opacity: 0.9;">Shinzou wo Sasageyo</span></span>';
+    } else {
+        document.getElementById('page-subtitle').innerText = 'تصفح وحمل الملفات الخاصة بهذه المادة.';
+    }
     
     const loadingEl = document.getElementById('loading');
     const fileListEl = document.getElementById('file-list');
