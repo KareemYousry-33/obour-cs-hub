@@ -46,12 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // التحقق مما إذا كان قد سجل الدخول بالفعل في الجلسة الحالية
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            if (session) {
-                authOverlay.style.display = 'none';
-            }
-        });
+        // إزالة الفحص التلقائي عشان يطلب الإيميل والباسورد كل مرة يدخل فيها زي ما طلبت
+        sessionStorage.removeItem('isAdminLoggedIn');
     }
     
     const uploadForm = document.getElementById('upload-form');
