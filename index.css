@@ -1462,3 +1462,34 @@ code {
     color: white;
     transform: scale(1.1) rotate(90deg);
 }
+
+/* Unified Back Button */
+.back-btn-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    padding: 0.5rem 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.back-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
