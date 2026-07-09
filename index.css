@@ -694,9 +694,25 @@ code {
 
     .nav-links {
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
         justify-content: center;
+        align-items: center;
         width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .feedback-modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+    
+    .feedback-modal-content .modal-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .user-profile-nav {
+        padding: 4px 10px 4px 4px;
+        margin-top: 0.5rem;
     }
 
     .section-title {
