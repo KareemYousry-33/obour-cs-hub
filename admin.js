@@ -18,26 +18,40 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Auth Logic
     if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
             
-            // بيانات الدخول الموحدة لكريم وجنة
-            if (email === 'jannah&kareem@obour.com' && password === 'admin123') {
+            const submitBtn = loginForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'جاري التحقق...';
+            loginError.style.display = 'none';
+
+            // تسجيل الدخول الحقيقي في Supabase
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'دخول';
+
+            if (error) {
+                loginError.style.display = 'block';
+                loginError.innerText = 'بيانات الدخول غير صحيحة، أو الحساب غير مسجل في Supabase!';
+            } else {
                 authOverlay.style.display = 'none';
                 loginError.style.display = 'none';
-                // حفظ حالة تسجيل الدخول مؤقتاً في الجلسة الحالية
-                sessionStorage.setItem('isAdminLoggedIn', 'true');
-            } else {
-                loginError.style.display = 'block';
             }
         });
 
         // التحقق مما إذا كان قد سجل الدخول بالفعل في الجلسة الحالية
-        if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
-            authOverlay.style.display = 'none';
-        }
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            if (session) {
+                authOverlay.style.display = 'none';
+            }
+        });
     }
     
     const uploadForm = document.getElementById('upload-form');
