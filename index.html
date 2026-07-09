@@ -361,8 +361,19 @@
                         const news = JSON.parse(text);
                         if (news && news.length > 0) {
                             const latest = news[0];
-                            document.getElementById('banner-text').innerText = latest.title;
-                            document.getElementById('latest-news-banner').style.display = 'block';
+                            const lastSeenId = localStorage.getItem('lastSeenNewsId');
+                            if (lastSeenId != latest.id) {
+                                const bannerText = document.getElementById('banner-text');
+                                const banner = document.getElementById('latest-news-banner');
+                                if (bannerText && banner) {
+                                    bannerText.innerText = latest.title;
+                                    banner.style.display = 'block';
+                                    banner.onclick = () => {
+                                        localStorage.setItem('lastSeenNewsId', latest.id);
+                                        location.href = 'news.html';
+                                    };
+                                }
+                            }
                         }
                     }
                 } catch (e) { }
