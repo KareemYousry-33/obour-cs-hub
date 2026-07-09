@@ -133,16 +133,22 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--text-muted);
+            color: var(--text-main);
             text-decoration: none;
             margin-bottom: 2rem;
             transition: color 0.3s ease;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.1rem;
+            font-family: 'Tajawal', sans-serif;
             cursor: pointer;
+            padding: 0.4rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
         }
 
         .back-link:hover {
-            color: var(--text-main);
+            background: rgba(255,255,255,0.1);
         }
         
         .empty-state {
@@ -198,7 +204,7 @@
 
     <nav class="glass-nav">
         <div class="logo" dir="ltr">
-            <a href="javascript:history.back()" style="text-decoration: none; color: inherit; display: flex; gap: 0.5rem; align-items: center;">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; gap: 0.5rem; align-items: center;">
                 <span class="en-logo">ObourCS</span>
                 <span class="ar-logo">Hub</span>
             </a>
@@ -207,13 +213,15 @@
 
     <main class="section-padding">
         <div style="max-width: 800px; margin: 0 auto;">
-            <a onclick="history.back()" class="back-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                الرجوع
-            </a>
+            <div style="display: flex; justify-content: flex-end; width: 100%; margin-bottom: 2rem;">
+                <a onclick="history.back()" class="back-link">
+                    <span>الرجوع</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
 
             <div class="section-header" style="text-align: right; margin-bottom: 3rem;">
                 <h2 class="section-title" style="font-size: 2.2rem;" id="page-title">جاري التحميل...</h2>

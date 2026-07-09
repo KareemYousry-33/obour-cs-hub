@@ -28,11 +28,7 @@
 
     <!-- Navbar -->
     <nav class="glass-nav">
-        <div class="logo" dir="ltr" style="display: flex; align-items: center; gap: 15px;">
-            <button onclick="history.back()" class="btn" style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; gap: 8px; color: var(--text-main);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><polyline points="12 19 5 12 12 5"></polyline></svg>
-                <span style="font-weight: 600;">رجوع</span>
-            </button>
+        <div class="logo" dir="ltr">
             <a href="index.html" style="text-decoration: none; color: inherit; display: flex; gap: 0.5rem; align-items: center;">
                 <span class="en-logo">ObourCS</span>
                 <span class="ar-logo">Hub</span>
@@ -57,7 +53,13 @@
         </div>
 
         <section id="home" class="hero">
-            <div class="hero-content">
+            <div class="hero-content" style="position: relative;">
+                <div style="display: flex; justify-content: flex-end; width: 100%; margin-bottom: 1.5rem;">
+                    <button onclick="history.back()" class="btn" style="padding: 0.4rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; gap: 8px; color: var(--text-main); cursor: pointer;">
+                        <span style="font-weight: 700; font-size: 1.1rem; font-family: 'Tajawal', sans-serif;">الرجوع</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
                 <span class="badge">الفرقة الثانية - الترم الثاني</span>
                 <h1 class="title">ملخصات + امتحانات سابقة<br><span class="gradient-text">لكل مواد علوم الحاسب</span>
                 </h1>
