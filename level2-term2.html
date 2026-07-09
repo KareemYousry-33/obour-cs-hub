@@ -41,11 +41,8 @@
                 تغيير الفرقة
             </a></li>
             <li><a href="#subjects">المواد الدراسية</a></li>
+            <li id="nav-user-section" style="margin-right: auto; padding-right: 15px;"></li>
         </ul>
-        <button onclick="history.back()" class="btn" style="padding: 0.4rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; gap: 8px; color: var(--text-main); cursor: pointer; height: fit-content; margin-right: auto; margin-left: 0;">
-            <span style="font-weight: 700; font-size: 1rem; font-family: 'Tajawal', sans-serif;">الرجوع</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </button>
     </nav>
 
     <!-- Main Content -->
@@ -58,7 +55,11 @@
 
         <section id="home" class="hero">
             <div class="hero-content" style="position: relative;">
-                <span class="badge">الفرقة الثانية - الترم الثاني</span>
+                <a href="index.html" class="back-link" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; margin-bottom: 2rem; transition: color 0.3s ease; font-weight: 600;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    الرجوع للرئيسية
+                </a>
+                <span class="badge" style="display: block; width: fit-content;">الفرقة الثانية - الترم الثاني</span>
                 <h1 class="title">ملخصات + امتحانات سابقة<br><span class="gradient-text">لكل مواد علوم الحاسب</span>
                 </h1>
 
@@ -310,6 +311,24 @@
         document.addEventListener('DOMContentLoaded', async () => {
             if (window.supabaseClient) {
                 try {
+                    const { data: { session } } = await window.supabaseClient.auth.getSession();
+                    const userSection = document.getElementById('nav-user-section');
+                    if (userSection) {
+                        if (session) {
+                            const currentUser = session.user;
+                            const name = currentUser.user_metadata?.full_name || currentUser.user_metadata?.name || currentUser.email.split('@')[0];
+                            const avatar = currentUser.user_metadata?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=4facfe&color=fff&rounded=true`;
+                            userSection.innerHTML = `
+                                <div class="user-profile-nav" onclick="window.location.href='profile.html'">
+                                    <img src="${avatar}" alt="Avatar" class="user-avatar">
+                                    <span class="user-name">${name}</span>
+                                </div>
+                            `;
+                        } else {
+                            userSection.innerHTML = `<button class="btn btn-primary" style="padding: 0.4rem 1.2rem; font-size: 0.95rem;" onclick="window.location.href='index.html'">دخول / تسجيل</button>`;
+                        }
+                    }
+
                     const { data, error } = await window.supabaseClient.storage.from('pdfs').download('data/bulletin.json');
                     if (!error && data) {
                         const text = await data.text();
