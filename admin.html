@@ -205,7 +205,10 @@
                     <input type="text" id="news-author" class="form-control" placeholder="مثال: Eng. Kareem Yousry">
                 </div>
                 
-                <button type="submit" id="publish-news-btn" class="btn btn-primary w-100" style="margin-top: 1rem; background: rgba(247, 37, 133, 0.1); border-color: rgba(247, 37, 133, 0.3);">نشر الخبر</button>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button type="submit" id="publish-news-btn" class="btn btn-primary w-100" style="background: rgba(247, 37, 133, 0.1); border-color: rgba(247, 37, 133, 0.3);">نشر الخبر</button>
+                    <button type="button" id="cancel-edit-btn" class="btn w-100" style="display: none; background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2);">إلغاء التعديل</button>
+                </div>
                 
                 <div id="news-status" class="status-message"></div>
             </form>

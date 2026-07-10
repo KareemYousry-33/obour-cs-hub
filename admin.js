@@ -72,7 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsAuthorInput = document.getElementById('news-author');
     const newsStatus = document.getElementById('news-status');
     const publishNewsBtn = document.getElementById('publish-news-btn');
+    const cancelEditBtn = document.getElementById('cancel-edit-btn');
     const newsItemsContainer = document.getElementById('news-items-container');
+    window.currentEditingNewsId = null;
+    window.currentNewsList = [];
+    
+    if (cancelEditBtn) {
+        cancelEditBtn.addEventListener('click', () => {
+            newsForm.reset();
+            window.currentEditingNewsId = null;
+            publishNewsBtn.innerText = 'نشر الخبر';
+            cancelEditBtn.style.display = 'none';
+        });
+    }
     
     // Subjects Data Mapping
     const subjectsMap = {
@@ -334,15 +346,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 try { existingNews = JSON.parse(await downloadData.text()); } catch(e) {}
             }
             
-            existingNews.unshift(newsItem);
+            if (window.currentEditingNewsId) {
+                const index = existingNews.findIndex(n => n.id === window.currentEditingNewsId);
+                if (index !== -1) {
+                    existingNews[index].title = title;
+                    existingNews[index].content = content;
+                    existingNews[index].author = author;
+                }
+            } else {
+                existingNews.unshift(newsItem);
+            }
             
             const jsonBlob = new Blob([JSON.stringify(existingNews)], { type: 'application/json' });
             const { error: uploadError } = await supabase.storage.from('pdfs').upload('data/bulletin.json', jsonBlob, { upsert: true });
             if (uploadError) throw uploadError;
             
             newsStatus.className = 'status-message success';
-            newsStatus.innerText = 'تم نشر الخبر بنجاح!';
+            newsStatus.innerText = window.currentEditingNewsId ? 'تم تعديل الخبر بنجاح!' : 'تم نشر الخبر بنجاح!';
             newsForm.reset();
+            window.currentEditingNewsId = null;
+            publishNewsBtn.innerText = 'نشر الخبر';
+            if (cancelEditBtn) cancelEditBtn.style.display = 'none';
             loadAdminNews();
         } catch (error) {
             console.error('News error:', error);
@@ -365,6 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             const newsArray = JSON.parse(await data.text());
+            window.currentNewsList = newsArray || [];
             if (!newsArray || newsArray.length === 0) {
                 newsItemsContainer.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">لا توجد أخبار منشورة حالياً.</p>';
                 return;
@@ -380,7 +405,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h4 style="color: var(--text-main); margin: 0 0 0.3rem 0; font-size: 1rem;">${news.title}</h4>
                         <span style="color: var(--text-muted); font-size: 0.8rem;">${dateString} • ${news.author}</span>
                     </div>
-                    <button onclick="deleteNews(${news.id})" class="btn" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 0.4rem 0.8rem; font-size: 0.85rem;">حذف</button>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button onclick="editNews(${news.id})" class="btn" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); padding: 0.4rem 0.8rem; font-size: 0.85rem;">تعديل</button>
+                        <button onclick="deleteNews(${news.id})" class="btn" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 0.4rem 0.8rem; font-size: 0.85rem;">حذف</button>
+                    </div>
                 `;
                 newsItemsContainer.appendChild(div);
             });
@@ -388,6 +416,23 @@ document.addEventListener('DOMContentLoaded', () => {
             newsItemsContainer.innerHTML = '<p style="color: #ef4444; font-size: 0.9rem;">خطأ في تحميل الأخبار</p>';
         }
     }
+
+    // Edit Specific News
+    window.editNews = function(newsId) {
+        if (!window.currentNewsList) return;
+        const news = window.currentNewsList.find(n => n.id === newsId);
+        if (!news) return;
+
+        newsTitleInput.value = news.title;
+        newsContentInput.value = news.content;
+        newsAuthorInput.value = news.author || '';
+        
+        window.currentEditingNewsId = newsId;
+        publishNewsBtn.innerText = 'تعديل الخبر';
+        if (cancelEditBtn) cancelEditBtn.style.display = 'block';
+        
+        document.getElementById('news-section').scrollIntoView({ behavior: 'smooth' });
+    };
 
     // Delete Specific News
     window.deleteNews = async function(newsId) {
